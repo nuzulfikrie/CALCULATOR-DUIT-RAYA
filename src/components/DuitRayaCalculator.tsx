@@ -5,12 +5,12 @@ import ConfettiAnimation from './ConfettiAnimation';
 
 const DuitRayaCalculator = () => {
   const [denominations, setDenominations] = useState([
-    { id: 1, value: 100, count: 8, color: 'bg-indigo-200', image: '100' },
+    { id: 1, value: 100, count: 0, color: 'bg-indigo-200', image: '100' },
     { id: 2, value: 50, count: 0, color: 'bg-emerald-200', image: '50' },
     { id: 3, value: 20, count: 0, color: 'bg-amber-200', image: '20' },
     { id: 4, value: 10, count: 0, color: 'bg-pink-200', image: '10' },
     { id: 5, value: 5, count: 0, color: 'bg-green-200', image: '5' },
-    { id: 6, value: 1, count: 3, color: 'bg-blue-200', image: '1' },
+    { id: 6, value: 1, count: 0, color: 'bg-blue-200', image: '1' },
   ]);
 
   const [showConfetti, setShowConfetti] = useState(false);
