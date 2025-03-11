@@ -1,30 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ConfettiAnimation from './ConfettiAnimation';
-const DuitRayaCalculator = () => {
 
+const DuitRayaCalculator = () => {
   const [denominations, setDenominations] = useState([
-    { id: 1, value: 100, count: 0, color: 'bg-indigo-200', image: '100' },
+    { id: 1, value: 100, count: 8, color: 'bg-indigo-200', image: '100' },
     { id: 2, value: 50, count: 0, color: 'bg-emerald-200', image: '50' },
     { id: 3, value: 20, count: 0, color: 'bg-amber-200', image: '20' },
     { id: 4, value: 10, count: 0, color: 'bg-pink-200', image: '10' },
     { id: 5, value: 5, count: 0, color: 'bg-green-200', image: '5' },
-    { id: 6, value: 1, count: 0, color: 'bg-blue-200', image: '1' },
+    { id: 6, value: 1, count: 3, color: 'bg-blue-200', image: '1' },
   ]);
 
   const [showConfetti, setShowConfetti] = useState(false);
   const [total, setTotal] = useState(0);
 
-  const calculateTotal = () => {
+  // Recalculate total whenever denominations change
+  useEffect(() => {
     const newTotal = denominations.reduce(
-      (total, denom) => total + denom.value * denom.count,
+      (sum, denom) => sum + denom.value * denom.count,
       0
     );
-    setShowConfetti(newTotal > 500);
     setTotal(newTotal);
-    return newTotal;
-  };
+    setShowConfetti(newTotal > 500);
+  }, [denominations]);
 
   const handleIncrement = (id: number) => {
     setDenominations(
@@ -32,7 +32,6 @@ const DuitRayaCalculator = () => {
         denom.id === id ? { ...denom, count: denom.count + 1 } : denom
       )
     );
-    calculateTotal();
   };
 
   const handleDecrement = (id: number) => {
@@ -43,15 +42,12 @@ const DuitRayaCalculator = () => {
           : denom
       )
     );
-    calculateTotal();
   };
 
   const resetAll = () => {
     setDenominations(
       denominations.map((denom) => ({ ...denom, count: 0 }))
     );
-    setTotal(0);
-    setShowConfetti(false);
   };
 
   return (
@@ -105,7 +101,6 @@ const DuitRayaCalculator = () => {
           >
             semula
           </button>
-
         </div>
       </div>
     </div>
