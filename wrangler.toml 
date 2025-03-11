@@ -1,0 +1,10 @@
+name = "duit-raya-calculator"
+compatibility_date = "2025-03-11"
+pages_build_output_dir = ".next"
+
+[vars]
+NODE_VERSION = "20"
+
+[[routes]]
+pattern = "kiraduitraya.nuzulfikriesalam.me/*"
+zone_name = "nuzulfikriesalam.me"
