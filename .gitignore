@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# vscode
+*.code-workspace
+
+# macos
+.DS_Store
+
+# windows
+Thumbs.db
